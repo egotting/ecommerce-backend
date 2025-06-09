@@ -1,6 +1,6 @@
 spring:
   application:
-    name: UserService
+    name: BackEnd
 
   datasource:
     url: jdbc:postgresql://localhost:3306/seu_banco
@@ -16,11 +16,11 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true
-
-  rabbitmq:
-    addresses: amqps://jaragua.lmq.cloudamqp.com
-    username: seu_usuario
-    password: sua_senha
-    virtual-host: seu_virtual_host
+jwt:
+  token:
+    private:
+      key: classpath:keys/app.key
+    public:
+      key: classpath:keys/app.pub
 server:
   port: 8080
