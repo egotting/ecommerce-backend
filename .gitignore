@@ -41,6 +41,6 @@ build/
 !/src/main/resources/keys/generated-keys.md
 
 ### docker ###
-/UserService/docker-compose.yml
-!/UserService/docker-compose-example.yml
+docker-compose.yml
+!docker-compose-example.yml
 
