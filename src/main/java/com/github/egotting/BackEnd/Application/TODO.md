@@ -1,0 +1,1 @@
+Application aonde fica a implentaçoes dos usecases as implementaçoes das regras de negocio

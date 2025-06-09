@@ -1,0 +1,1 @@
+Aonde deixa as configuraçoes do projeto
