@@ -1,5 +1,6 @@
 package com.github.egotting.BackEnd.Domain.CValueObjects;
 
+import com.github.egotting.BackEnd.Domain.entities.CValueObjects.Name;
 import org.junit.jupiter.api.Test;
 
 public class NameTest {
