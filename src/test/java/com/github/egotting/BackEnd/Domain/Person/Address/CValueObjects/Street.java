@@ -1,4 +1,8 @@
-package com.github.egotting.BackEnd.Domain.entities.Address.ValueObjects;
+package com.github.egotting.BackEnd.Domain.Person.Address.CValueObjects;
+
+import org.junit.jupiter.api.Test;
+
+import java.util.regex.Pattern;
 
 public class Street {
     private String name;
@@ -7,9 +11,11 @@ public class Street {
 
     public Street(String name, String number, String complement) {
         if (!isValid(name, number)) throw new IllegalArgumentException();
+
         this.name = name;
         this.number = number;
         this.complement = complement;
+
     }
 
     private boolean isValid(String name, String number) {
@@ -37,5 +43,13 @@ public class Street {
                 ", number='" + number + '\'' +
                 ", complement='" + complement + '\'' +
                 '}';
+    }
+}
+
+class StreetTest {
+    @Test
+    void testValidStreet() {
+        Street street = new Street("Rua das Flores", "1", "");
+        System.out.println(street);
     }
 }
