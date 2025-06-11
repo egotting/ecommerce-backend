@@ -12,7 +12,7 @@ public class Orders {
     private Identity id;
     private Instant data_order;
     private StatusOrders status_orders;
-    private Customer user;
+    private Customer owner_order;
     private ProductsOrders products_orders;
     private Payment payment;
 }
