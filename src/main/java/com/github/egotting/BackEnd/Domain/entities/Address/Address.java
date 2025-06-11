@@ -1,7 +1,6 @@
 package com.github.egotting.BackEnd.Domain.entities.Address;
 
 
-import com.github.egotting.BackEnd.Domain.entities.Address.ValueObjects.Country;
 import com.github.egotting.BackEnd.Domain.entities.Address.ValueObjects.States;
 import com.github.egotting.BackEnd.Domain.entities.Address.ValueObjects.Street;
 import com.github.egotting.BackEnd.Domain.entities.Address.ValueObjects.ZipCode;
@@ -12,7 +11,6 @@ public class Address {
     private Identity id;
     private Street street;
     private States state;
-    private Country country;
     private ZipCode zpc;
     private Customer user;
 }

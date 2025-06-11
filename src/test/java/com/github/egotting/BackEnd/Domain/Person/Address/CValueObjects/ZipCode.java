@@ -1,4 +1,6 @@
-package com.github.egotting.BackEnd.Domain.entities.Address.ValueObjects;
+package com.github.egotting.BackEnd.Domain.Person.Address.CValueObjects;
+
+import org.junit.jupiter.api.Test;
 
 import java.util.Objects;
 
@@ -37,5 +39,21 @@ public class ZipCode {
         return "ZipCode{" +
                 "zipCode='" + zipCode + '\'' +
                 '}';
+    }
+}
+
+class ZipCodeTest {
+    @Test
+    void shouldCreateZipCode() {
+        ZipCode format1 = new ZipCode("01001000");
+        ZipCode format2 = new ZipCode("01001-000");
+        System.out.println(format1);
+        System.out.println(format2);
+    }
+
+    @Test
+    void shouldBeInvalidZipCode() {
+        ZipCode zipCode = new ZipCode("1234567");
+        System.out.println(zipCode);
     }
 }
