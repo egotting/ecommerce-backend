@@ -6,12 +6,13 @@ import com.github.egotting.BackEnd.Domain.entities.CValueObjects.Name;
 import com.github.egotting.BackEnd.Domain.entities.CValueObjects.Quantity;
 import com.github.egotting.BackEnd.Domain.entities.Category.Category;
 import com.github.egotting.BackEnd.Domain.entities.Products.ValueObjects.Description;
+import com.github.egotting.BackEnd.Domain.entities.Products.ValueObjects.ProductName;
 
 import java.math.BigDecimal;
 
 public class Products {
     private Identity id;
-    private Name name;
+    private ProductName name;
     private Description description;
     private BigDecimal price;
     private Quantity quantity_stock;
