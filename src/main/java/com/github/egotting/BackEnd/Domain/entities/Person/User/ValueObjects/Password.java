@@ -13,11 +13,11 @@ public class Password {
         this.value = value;
     }
 
-    private boolean isValid(String value) {
-        String PASSWORD_REGEX = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&*()_+\\-={}\\[\\]:;\"'<>,.?/\\\\|]).{8,}$";
+    public boolean isValid(String value) {
         if (value.isEmpty()) return false;
         if (value.length() < 8 || value.length() > 32) return false;
-        if (!value.matches(PASSWORD_REGEX)) return false;
+        if (!value.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&*()_+\\-={}\\[\\]:;\"'<>,.?/\\\\|]).{8,}$"))
+            return false;
         return true;
     }
 

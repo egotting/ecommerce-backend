@@ -9,12 +9,12 @@ import java.util.UUID;
 
 public class User {
 
-    public User(String nickname, Password password, Email email, AccountInfo accountInfo) {
+    public User(String nickname, Password password, Email email) {
         this.id = UUID.randomUUID();
         this.nickname = nickname;
         this.password = password;
         this.email = email;
-        this.accountInfo = accountInfo;
+        this.accountInfo = new AccountInfo();
     }
 
     private UUID id;
@@ -39,5 +39,14 @@ public class User {
         return password.getValue();
     }
 
-
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", nickname='" + nickname + '\'' +
+                ", email=" + email +
+                ", password=" + password +
+                ", accountInfo=" + accountInfo +
+                '}';
+    }
 }
