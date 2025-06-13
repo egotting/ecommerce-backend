@@ -17,4 +17,20 @@ public class ProductInfo {
     private String description;
     private BigDecimal price;
     private Category category;
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public String getCategory() {
+        return category.getName();
+    }
 }

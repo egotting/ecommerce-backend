@@ -4,6 +4,7 @@ public class Street {
     private String name;
     private String number;
     private String complement;
+    private StringBuilder completeAddress;
 
     public Street(String name, String number, String complement) {
         if (!isValid(name, number)) throw new IllegalArgumentException();
@@ -18,16 +19,13 @@ public class Street {
         return true;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public String getNumber() {
-        return number;
-    }
-
-    public String getComplement() {
-        return complement;
+    public StringBuilder getValue() {
+        return completeAddress.append(name)
+                .append(", ")
+                .append(number)
+                .append(", ")
+                .append(" - ")
+                .append(complement);
     }
 
     @Override

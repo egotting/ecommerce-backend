@@ -23,4 +23,11 @@ public class City {
     public int hashCode() {
         return Objects.hashCode(value);
     }
+
+    @Override
+    public String toString() {
+        return "City{" +
+                "value='" + value + '\'' +
+                '}';
+    }
 }

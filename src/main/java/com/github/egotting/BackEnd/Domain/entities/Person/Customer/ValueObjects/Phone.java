@@ -21,6 +21,10 @@ public class Phone {
         return matcher.matches();
     }
 
+    public String getValue() {
+        return value;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;

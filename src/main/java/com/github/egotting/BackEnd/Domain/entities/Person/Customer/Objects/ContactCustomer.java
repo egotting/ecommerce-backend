@@ -11,4 +11,11 @@ public class ContactCustomer {
 
     private Email email;
     private Phone phone;
+
+    public String getEmailCustomer() {
+        return email.getValue();
+    }
+    public String getPhoneCustomer() {
+        return phone.getValue();
+    }
 }

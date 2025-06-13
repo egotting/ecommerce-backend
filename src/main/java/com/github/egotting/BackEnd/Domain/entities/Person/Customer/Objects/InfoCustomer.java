@@ -14,7 +14,11 @@ public class InfoCustomer {
     private CPF cpf;
     private Address address;
 
-    public String getCpf(){
+    public String getCpf() {
         return cpf.getValue();
+    }
+
+    public Address getAddress() {
+        return address.getAddress().build();
     }
 }

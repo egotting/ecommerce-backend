@@ -10,4 +10,8 @@ public class Products {
     private UUID id;
     private ProductInfo productInfo;
     private Quantity quantity_stock;
+
+    public String getProductInfo(){
+        return productInfo.toString();
+    }
 }

@@ -14,7 +14,6 @@ public class Address {
         this.city = builder.city;
         this.state = builder.state;
         this.zpc = builder.zpc;
-        this.user = builder.user;
     }
 
     private Street street;
@@ -23,12 +22,15 @@ public class Address {
     private ZipCode zpc;
     private Customer user;
 
+    public AddressBuilder getAddress() {
+        return new AddressBuilder();
+    }
+
     public static class AddressBuilder {
         private Street street;
         private City city;
         private States state;
         private ZipCode zpc;
-        private Customer user;
 
         public AddressBuilder street(Street street) {
             this.street = street;
@@ -50,13 +52,20 @@ public class Address {
             return this;
         }
 
-        public AddressBuilder user(Customer user) {
-            this.user = user;
-            return this;
-        }
 
         public Address build() {
             return new Address(this);
         }
+
+    }
+
+    @Override
+    public String toString() {
+        return "AddressBuilder{" +
+                "street=" + street +
+                ", city=" + city +
+                ", state=" + state +
+                ", zpc=" + zpc +
+                '}';
     }
 }
