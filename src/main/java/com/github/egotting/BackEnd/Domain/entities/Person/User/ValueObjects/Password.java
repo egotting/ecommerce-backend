@@ -6,16 +6,23 @@ public class Password {
     private String value;
 
     public Password(String value) {
-        if (isValid(value)) {
+        if (!isValid(value)) {
             throw new IllegalArgumentException("Value cannot be null or empty value needs to be between 8 and " +
                     "32 characters long, must contain at least one digit, one lowercase letter, one uppercase letter");
         }
         this.value = value;
     }
 
-    public boolean isValid(String value) {
+    private boolean isValid(String value) {
         String PASSWORD_REGEX = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&*()_+\\-={}\\[\\]:;\"'<>,.?/\\\\|]).{8,}$";
-        return value.isEmpty() || !value.matches(PASSWORD_REGEX);
+        if (value.isEmpty()) return false;
+        if (value.length() < 8 || value.length() > 32) return false;
+        if (!value.matches(PASSWORD_REGEX)) return false;
+        return true;
+    }
+
+    public String getValue() {
+        return value;
     }
 
     @Override

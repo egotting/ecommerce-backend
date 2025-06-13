@@ -1,49 +1,43 @@
 package com.github.egotting.BackEnd.Domain.entities.Person.User;
 
-import com.github.egotting.BackEnd.Domain.entities.CValueObjects.Identity;
-import com.github.egotting.BackEnd.Domain.entities.CValueObjects.Name;
-import com.github.egotting.BackEnd.Domain.entities.Person.Customer.Customer;
 import com.github.egotting.BackEnd.Domain.entities.CValueObjects.Email;
+import com.github.egotting.BackEnd.Domain.entities.Person.User.Objects.AccountInfo;
 import com.github.egotting.BackEnd.Domain.entities.Person.User.ValueObjects.Password;
+
+import java.util.UUID;
 
 
 public class User {
 
-    public User() {
-    }
-
-    public User(Identity id, Name name, Email email, Password password, Customer customer) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
+    public User(String nickname, Password password, Email email, AccountInfo accountInfo) {
+        this.id = UUID.randomUUID();
+        this.nickname = nickname;
         this.password = password;
-        this.customer = customer;
+        this.email = email;
+        this.accountInfo = accountInfo;
     }
 
-    private Identity id;
-    private Name name;
+    private UUID id;
+    private String nickname;
     private Email email;
     private Password password;
-    private Customer customer;
+    private AccountInfo accountInfo;
 
-
-    public Identity getId() {
+    public UUID getId() {
         return id;
     }
 
-    public Name getName() {
-        return name;
+    public String getNickname() {
+        return nickname;
     }
 
-    public Email getEmail() {
-        return email;
+    public String getEmail() {
+        return email.getValue();
     }
 
-    public Password getPassword() {
-        return password;
+    public String getPassword() {
+        return password.getValue();
     }
 
-    public Customer getCustomer() {
-        return customer;
-    }
+
 }
