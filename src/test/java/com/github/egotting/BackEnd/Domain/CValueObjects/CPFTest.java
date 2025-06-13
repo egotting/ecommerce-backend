@@ -1,6 +1,6 @@
 package com.github.egotting.BackEnd.Domain.CValueObjects;
 
-import com.github.egotting.BackEnd.Domain.entities.CValueObjects.CPF;
+import com.github.egotting.BackEnd.Domain.entities.Person.Customer.ValueObjects.CPF;
 import org.junit.jupiter.api.Test;
 
 public class CPFTest {

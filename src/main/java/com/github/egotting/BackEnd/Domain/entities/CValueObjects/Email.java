@@ -17,6 +17,11 @@ public class Email {
         return value.isEmpty() || !value.matches(EMAIL_REGEX);
     }
 
+
+    public String getValue() {
+        return value;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
