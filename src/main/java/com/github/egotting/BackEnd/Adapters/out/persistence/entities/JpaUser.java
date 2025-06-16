@@ -7,6 +7,7 @@ import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 
@@ -28,6 +29,8 @@ public class JpaUser {
     @Column(nullable = false, name = "user_password")
     @Size(min = 8, max = 32)
     private String password;
+    private LocalDateTime createdAt;
+    private boolean isActive;
 
     public JpaUser() {
     }
@@ -37,5 +40,7 @@ public class JpaUser {
         this.nickname = user.getNickname();
         this.email = user.getEmail();
         this.password = user.getPassword();
+        createdAt = LocalDateTime.now();
+        isActive = false;
     }
 }
