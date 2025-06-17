@@ -1,19 +1,19 @@
 package com.github.egotting.BackEnd.Domain.entities.Person.Customer.Objects;
 
-import com.github.egotting.BackEnd.Domain.entities.CValueObjects.Email;
 import com.github.egotting.BackEnd.Domain.entities.Person.Customer.ValueObjects.Phone;
+import com.github.egotting.BackEnd.Domain.entities.Person.User.User;
 
 public class ContactCustomer {
-    public ContactCustomer(Email email, Phone phone) {
-        this.email = email;
+    public ContactCustomer(User email, Phone phone) {
+        this.email = email.getEmail();
         this.phone = phone;
     }
 
-    private Email email;
+    private String email;
     private Phone phone;
 
     public String getEmailCustomer() {
-        return email.getValue();
+        return email;
     }
     public String getPhoneCustomer() {
         return phone.getValue();

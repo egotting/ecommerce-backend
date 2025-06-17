@@ -18,6 +18,10 @@ public class InfoCustomer {
         return cpf.getValue();
     }
 
+    public String getFullName() {
+        return fullName;
+    }
+
     public Address getAddress() {
         return address.getAddress().build();
     }

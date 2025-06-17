@@ -5,11 +5,19 @@ import com.github.egotting.BackEnd.Domain.entities.Person.User.User;
 import java.util.UUID;
 
 public class CustomerId {
-    private UUID id;
-    private User user;
-
     public CustomerId(User user) {
         this.id = UUID.randomUUID();
         this.user = user;
+    }
+
+    private UUID id;
+    private User user;
+
+    public UUID getId() {
+        return id;
+    }
+
+    public User getUser() {
+        return user;
     }
 }
