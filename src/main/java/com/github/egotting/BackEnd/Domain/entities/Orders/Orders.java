@@ -7,10 +7,9 @@ import com.github.egotting.BackEnd.Domain.entities.ProductsOrders.ProductsOrders
 
 import java.time.Instant;
 import java.util.List;
-import java.util.UUID;
 
 public class Orders {
-    private UUID id;
+    private Long id;
     private Instant data_order;
     private StatusOrders status_orders;
     private Customer owner_order;
