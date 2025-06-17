@@ -48,5 +48,4 @@ public class JpaUser {
     @Column(nullable = false, name = "isactive")
     private boolean isActive;
 
-
 }
