@@ -1,6 +1,6 @@
 package com.github.egotting.BackEnd.Domain.entities.Person.Customer.Objects;
 
-import com.github.egotting.BackEnd.Domain.entities.Person.Customer.ValueObjects.Phone;
+import com.github.egotting.BackEnd.Domain.entities.CValueObjects.Phone;
 import com.github.egotting.BackEnd.Domain.entities.Person.User.User;
 
 public class ContactCustomer {
