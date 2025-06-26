@@ -2,7 +2,6 @@ package com.github.egotting.BackEnd.Domain.entities.Payment.ValueObjects;
 
 import com.github.egotting.BackEnd.Domain.entities.Payment.Enum.PaymentsMethods;
 
-// TODO: Implement the paymentmethod
 public class PaymentMethod {
     private PaymentsMethods value;
 
