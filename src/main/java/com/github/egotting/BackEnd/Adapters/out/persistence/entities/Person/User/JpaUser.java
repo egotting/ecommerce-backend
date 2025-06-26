@@ -1,5 +1,6 @@
-package com.github.egotting.BackEnd.Adapters.out.persistence.entities;
+package com.github.egotting.BackEnd.Adapters.out.persistence.entities.Person.User;
 
+import com.github.egotting.BackEnd.Adapters.out.persistence.entities.Roles.JpaRoles;
 import com.github.egotting.BackEnd.Domain.entities.Person.User.User;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
@@ -7,26 +8,29 @@ import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 import java.util.UUID;
 
 
-@Table(name = "user")
+@Table(name = "users")
 @Entity
 @Getter
 @Setter
 public class JpaUser {
 
+    @Deprecated
     public JpaUser() {
     }
 
-    public JpaUser(User user) {
-        this.id = user.getId();
-        this.nickname = user.getNickname();
-        this.email = user.getEmail();
-        this.password = user.getPassword();
-        createdAt = LocalDateTime.now();
-        isActive = false;
+    public JpaUser(User domain) {
+        this.id = domain.getId();
+        this.nickname = domain.getNickname();
+        this.email = domain.getEmail();
+        this.password = domain.getPassword();
+        this.role = new JpaRoles(domain.getUserRole());
+        this.insertedAt = domain.insertedAt();
+        this.updatedAt = domain.updatedAt();
+        this.isActive = domain.isActive();
     }
 
     @Id
@@ -43,8 +47,13 @@ public class JpaUser {
     @Column(nullable = false, name = "password")
     @Size(min = 8, max = 32, message = "Password must be between 8 and 32 characters")
     private String password;
-    @Column(nullable = false, name = "createdat")
-    private LocalDateTime createdAt;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(nullable = false, unique = true)
+    private JpaRoles role;
+    @Column(nullable = false, name = "created_at")
+    private Instant insertedAt;
+    @Column(nullable = false, name = "updated_at")
+    private Instant updatedAt;
     @Column(nullable = false, name = "isactive")
     private boolean isActive;
 
