@@ -1,16 +1,14 @@
 package com.github.egotting.BackEnd.Domain.Person.Orders.ValueObjects;
 
-import com.github.egotting.BackEnd.Domain.entities.Orders.Enum.Status;
-import com.github.egotting.BackEnd.Domain.entities.Orders.ValueObjects.StatusOrders;
-import org.junit.jupiter.api.Test;
-
-import java.util.List;
+import com.github.egotting.BackEnd.Domain.entities.States.*;
+import org.junit.jupiter.api.*;
 
 class StatusOrdersTest {
 
     @Test
     void shouldCreateStatusOrders() {
-        StatusOrders statusOrders = new StatusOrders(Status.CANCELED);
+        Status statusOrders = new Status();
+        statusOrders.getStatus();
         System.out.println(statusOrders);
     }
 

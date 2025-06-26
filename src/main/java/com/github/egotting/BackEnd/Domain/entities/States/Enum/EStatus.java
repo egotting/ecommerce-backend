@@ -1,6 +1,6 @@
-package com.github.egotting.BackEnd.Domain.entities.Orders.Enum;
+package com.github.egotting.BackEnd.Domain.entities.States.Enum;
 
-public enum Status {
+public enum EStatus {
     PENDING,
     PROCESSING,
     SHIPPED,
