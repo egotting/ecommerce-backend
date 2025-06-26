@@ -30,7 +30,7 @@ public class ProductInfo {
         return price;
     }
 
-    public String getCategory() {
-        return category.getName();
+    public Category getCategory() {
+        return category;
     }
 }
