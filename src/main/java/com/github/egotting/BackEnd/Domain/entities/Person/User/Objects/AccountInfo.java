@@ -1,13 +1,26 @@
 package com.github.egotting.BackEnd.Domain.entities.Person.User.Objects;
 
-import java.time.LocalDateTime;
+import com.github.egotting.BackEnd.Domain.entities.Roles.Roles;
+
+import java.time.Instant;
 
 public class AccountInfo {
+
+
     public AccountInfo() {
-        this.createdAt = LocalDateTime.now();
+        this.role.getNameUser();
+        this.insertedAt = Instant.now();
+        this.updatedAt = Instant.now();
         this.isActive = true;
     }
 
-    private LocalDateTime createdAt;
+    private Roles role;
+    private Instant insertedAt;
+    private Instant updatedAt;
     private boolean isActive;
+
+
+    public Roles getRole() {
+        return role.getNameUser();
+    }
 }
