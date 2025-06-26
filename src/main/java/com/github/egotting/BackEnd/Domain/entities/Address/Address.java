@@ -7,56 +7,64 @@ import com.github.egotting.BackEnd.Domain.entities.Address.ValueObjects.Street;
 import com.github.egotting.BackEnd.Domain.entities.Address.ValueObjects.ZipCode;
 import com.github.egotting.BackEnd.Domain.entities.Person.Customer.Customer;
 
+import java.time.*;
+
 
 public class Address {
-    public Address(AddressBuilder builder) {
-        this.street = builder.street;
-        this.city = builder.city;
-        this.state = builder.state;
-        this.zpc = builder.zpc;
+
+    public Address() {
     }
 
+    public Address(Long id, Street street, City city, States state, ZipCode zpc, Customer user) {
+        this.id = id;
+        this.street = street;
+        this.city = city;
+        this.state = state;
+        this.zpc = zpc;
+        this.user = user;
+        this.insertedAt = Instant.now();
+        this.updatedAt = Instant.now();
+    }
+
+    private Long id;
     private Street street;
     private City city;
     private States state;
     private ZipCode zpc;
     private Customer user;
+    private Instant insertedAt;
+    private Instant updatedAt;
 
-    public AddressBuilder getAddress() {
-        return new AddressBuilder();
+    public Long getId() {
+        return id;
     }
 
-    public static class AddressBuilder {
-        private Street street;
-        private City city;
-        private States state;
-        private ZipCode zpc;
+    public String getStreet() {
+        return street.toString();
+    }
 
-        public AddressBuilder street(Street street) {
-            this.street = street;
-            return this;
-        }
+    public String getCity() {
+        return city.toString();
+    }
 
-        public AddressBuilder city(City city) {
-            this.city = city;
-            return this;
-        }
+    public String getState() {
+        return state.toString();
+    }
 
-        public AddressBuilder state(States state) {
-            this.state = state;
-            return this;
-        }
+    public String getZpc() {
+        return zpc.toString();
+    }
 
-        public AddressBuilder zipCode(ZipCode zpc) {
-            this.zpc = zpc;
-            return this;
-        }
+    public Customer getUser() {
+        return user;
+    }
 
+    public Instant insertedAt() {
+        return Instant.now();
+    }
 
-        public Address build() {
-            return new Address(this);
-        }
-
+    public Instant updatedAt() {
+        return Instant.now();
     }
 
     @Override
