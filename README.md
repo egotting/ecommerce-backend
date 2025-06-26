@@ -31,7 +31,7 @@ Proporcionar um ambiente de aprendizado prático sobre:
 2. **Gere as chaves JWT**  
    Siga as instruções em `src/main/resources/keys/generate-ur-keys.md` para gerar as chaves pública e privada.
 3. **Configure o banco de dados**  
-   Renomeie o arquivo `src/main/resources/application.properties-example` para `application.properties` e coloque as
+   Renomeie o arquivo `src/main/resources/application-example.yml` para `application.yml` e coloque as
    credenciais do seu banco PostgreSQL.
 5. **Instale as dependências e execute o projeto**
    ```bash
