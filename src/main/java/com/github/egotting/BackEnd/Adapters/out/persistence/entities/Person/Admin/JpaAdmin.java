@@ -1,6 +1,5 @@
 package com.github.egotting.BackEnd.Adapters.out.persistence.entities.Person.Admin;
 
-import com.github.egotting.BackEnd.Adapters.out.persistence.entities.Roles.*;
 import com.github.egotting.BackEnd.Domain.entities.Person.Admin.*;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
@@ -19,10 +18,10 @@ public class JpaAdmin {
 
     public JpaAdmin(Admin domain) {
         this.id = domain.getId();
-        this.fullname = domain.getFullName();
+        this.fullname = domain.getFullname();
         this.password = domain.getPassword();
         this.key = domain.getKey();
-        this.role = new JpaRoles(domain.getRole());
+        this.role = domain.getRole();
         this.insertedAt = domain.insertedAt();
         this.updatedAt = domain.updatedAt();
         this.isActive = domain.isActive();
@@ -40,8 +39,8 @@ public class JpaAdmin {
     private String password;
     @Column(nullable = false, unique = true)
     private String key;
-    @ManyToOne(fetch = FetchType.LAZY)
-    private JpaRoles role;
+    @Column(name = "admin_role", nullable = false, unique = true)
+    private String role;
     @Column(nullable = false, name = "created_at")
     private Instant insertedAt;
     @Column(nullable = false, name = "updated_at")

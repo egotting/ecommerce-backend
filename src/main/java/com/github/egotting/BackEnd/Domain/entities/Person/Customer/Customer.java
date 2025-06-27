@@ -1,61 +1,61 @@
 package com.github.egotting.BackEnd.Domain.entities.Person.Customer;
 
 import com.github.egotting.BackEnd.Domain.entities.Address.*;
-import com.github.egotting.BackEnd.Domain.entities.Orders.Orders;
-import com.github.egotting.BackEnd.Domain.entities.Person.Customer.Objects.ContactCustomer;
-import com.github.egotting.BackEnd.Domain.entities.Person.Customer.Objects.CustomerId;
-import com.github.egotting.BackEnd.Domain.entities.Person.Customer.Objects.InfoCustomer;
-import com.github.egotting.BackEnd.Domain.entities.Person.User.User;
-import com.github.egotting.BackEnd.Domain.entities.Roles.*;
+import com.github.egotting.BackEnd.Domain.entities.CValueObjects.*;
+import com.github.egotting.BackEnd.Domain.entities.Orders.*;
+import com.github.egotting.BackEnd.Domain.entities.Person.User.*;
+import com.github.egotting.BackEnd.Domain.entities.Roles.Enum.*;
 
-import java.time.Instant;
-import java.util.List;
-import java.util.UUID;
+import java.time.*;
+import java.util.*;
 
 public class Customer {
 
-    public Customer(CustomerId id, InfoCustomer infoCustomer, ContactCustomer contactInfo, List<Orders> orders) {
-        this.customerId = id;
-        this.contactInfo = contactInfo;
-        this.infoCustomer = infoCustomer;
+    public Customer() {
+    }
+
+    public Customer(User user, String fullName, CPF cpf, String email,
+                    Phone phone, List<Address>
+                            address, List<Orders> orders) {
+        this.id = UUID.randomUUID();
+        this.user = user;
+        this.fullName = fullName;
+        this.cpf = cpf;
+        this.email = email;
+        this.phone = phone;
+        this.role = ERoles.CUSTOMER.name().toUpperCase();
+        this.address = address;
         this.orders = orders;
         this.insertedAt = Instant.now();
         this.updatedAt = Instant.now();
     }
 
-    private CustomerId customerId;
-    private InfoCustomer infoCustomer;
-    private ContactCustomer contactInfo;
+    private UUID id;
+    private User user;
+    private String fullName;
+    private CPF cpf;
+    private String email;
+    private Phone phone;
+    private String role;
+    private List<Address> address;
     private List<Orders> orders;
     private Instant insertedAt;
     private Instant updatedAt;
 
     public UUID getId() {
-        return customerId.getId();
+        return id;
     }
 
     public User getUser() {
-        return customerId.getUser();
-    }
-
-    public String getFullName() {
-        return infoCustomer.getFullName();
-    }
-
-    public List<Address> getAddress() {
-        return infoCustomer.getAddress();
-    }
-
-    public String getCpfValue() {
-        return infoCustomer.getCpf();
-    }
-
-    public String getPhoneNumber() {
-        return contactInfo.getPhoneCustomer();
+        return user;
     }
 
     public List<Orders> getOrders() {
         return orders;
+    }
+
+    public String getPhone() {
+        return phone.getValue();
     }
 
     public Instant getInsertedAt() {
@@ -66,8 +66,32 @@ public class Customer {
         return updatedAt;
     }
 
-    public Roles getCustomerRole() {
-        return infoCustomer.getRole();
+    public String getCustomerRole() {
+        return getRole();
+    }
+
+    public String getEmailCustomer() {
+        return email;
+    }
+
+    public String getPhoneCustomer() {
+        return phone.getValue();
+    }
+
+    public String getCpf() {
+        return cpf.getValue();
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public List<Address> getAddress() {
+        return address.stream().toList();
+    }
+
+    public String getRole() {
+        return ERoles.CUSTOMER.name().toUpperCase();
     }
 
     public Instant insertedAt() {

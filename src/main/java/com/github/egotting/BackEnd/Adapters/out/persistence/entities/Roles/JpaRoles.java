@@ -22,7 +22,7 @@ public class JpaRoles {
 
     public JpaRoles(Roles domain) {
         this.id = domain.getId();
-        this.role = domain.getName();
+        this.roles = domain.getRoles();
         this.users = domain.getUsers().stream().map(JpaUser::new).collect(Collectors.toList());
         this.customers = domain.getCustomers().stream().map(JpaCustomer::new).collect(Collectors.toList());
         this.admins = domain.getAdmins().stream().map(JpaAdmin::new).collect(Collectors.toList());
@@ -35,7 +35,7 @@ public class JpaRoles {
     @Column(name = "id", unique = true, nullable = false)
     private Long id;
     @Column(name = "roles", nullable = false, unique = true)
-    private String role;
+    private List<String> roles;
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<JpaUser> users;
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)

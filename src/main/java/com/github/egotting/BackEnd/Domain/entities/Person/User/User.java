@@ -1,12 +1,11 @@
 package com.github.egotting.BackEnd.Domain.entities.Person.User;
 
-import com.github.egotting.BackEnd.Domain.entities.CValueObjects.Email;
-import com.github.egotting.BackEnd.Domain.entities.Person.User.Objects.AccountInfo;
-import com.github.egotting.BackEnd.Domain.entities.Person.User.ValueObjects.Password;
-import com.github.egotting.BackEnd.Domain.entities.Roles.*;
+import com.github.egotting.BackEnd.Domain.entities.CValueObjects.*;
+import com.github.egotting.BackEnd.Domain.entities.Person.User.ValueObjects.*;
+import com.github.egotting.BackEnd.Domain.entities.Roles.Enum.*;
 
 import java.time.*;
-import java.util.UUID;
+import java.util.*;
 
 
 public class User {
@@ -19,14 +18,20 @@ public class User {
         this.nickname = nickname;
         this.email = email;
         this.password = password;
-        this.accountInfo = new AccountInfo();
+        this.role = ERoles.USER.name().toUpperCase();
+        this.insertedAt = Instant.now();
+        this.updatedAt = Instant.now();
+        this.isActive = true;
     }
 
     private UUID id;
     private String nickname;
     private Email email;
     private Password password;
-    private AccountInfo accountInfo;
+    private String role;
+    private Instant insertedAt;
+    private Instant updatedAt;
+    private boolean isActive;
 
     public UUID getId() {
         return UUID.randomUUID();
@@ -44,8 +49,9 @@ public class User {
         return password.getValue();
     }
 
-    public Roles getUserRole() {
-        return accountInfo.getRole();
+
+    public String getRole() {
+        return ERoles.USER.name().toUpperCase();
     }
 
     public Instant insertedAt() {
@@ -60,14 +66,5 @@ public class User {
         return true;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", nickname='" + nickname + '\'' +
-                ", email=" + email +
-                ", password=" + password +
-                ", accountInfo=" + accountInfo +
-                '}';
-    }
+
 }

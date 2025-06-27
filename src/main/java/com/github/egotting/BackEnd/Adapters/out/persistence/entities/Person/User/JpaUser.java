@@ -1,15 +1,12 @@
 package com.github.egotting.BackEnd.Adapters.out.persistence.entities.Person.User;
 
-import com.github.egotting.BackEnd.Adapters.out.persistence.entities.Roles.JpaRoles;
-import com.github.egotting.BackEnd.Domain.entities.Person.User.User;
+import com.github.egotting.BackEnd.Domain.entities.Person.User.*;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.Size;
-import lombok.Getter;
-import lombok.Setter;
+import jakarta.validation.constraints.*;
+import lombok.*;
 
-import java.time.Instant;
-import java.util.UUID;
+import java.time.*;
+import java.util.*;
 
 
 @Table(name = "users")
@@ -27,7 +24,7 @@ public class JpaUser {
         this.nickname = domain.getNickname();
         this.email = domain.getEmail();
         this.password = domain.getPassword();
-        this.role = new JpaRoles(domain.getUserRole());
+        this.role = domain.getRole();
         this.insertedAt = domain.insertedAt();
         this.updatedAt = domain.updatedAt();
         this.isActive = domain.isActive();
@@ -47,9 +44,8 @@ public class JpaUser {
     @Column(nullable = false, name = "password")
     @Size(min = 8, max = 32, message = "Password must be between 8 and 32 characters")
     private String password;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(nullable = false, unique = true)
-    private JpaRoles role;
+    @Column(name = "user_role", nullable = false, unique = true)
+    private String role;
     @Column(nullable = false, name = "created_at")
     private Instant insertedAt;
     @Column(nullable = false, name = "updated_at")

@@ -33,8 +33,12 @@ public class Status {
         return orders;
     }
 
-    public String getStatus() {
-        return status.name();
+    public List<String> getStatus() {
+        List<EStatus> status = List.of(EStatus.values());
+
+        return status.stream()
+                .map(Enum::name)
+                .toList();
     }
 
     public Instant insertedAt() {

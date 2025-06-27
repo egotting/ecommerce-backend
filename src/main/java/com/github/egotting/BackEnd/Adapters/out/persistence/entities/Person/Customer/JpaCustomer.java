@@ -4,7 +4,6 @@ package com.github.egotting.BackEnd.Adapters.out.persistence.entities.Person.Cus
 import com.github.egotting.BackEnd.Adapters.out.persistence.entities.Address.*;
 import com.github.egotting.BackEnd.Adapters.out.persistence.entities.Orders.*;
 import com.github.egotting.BackEnd.Adapters.out.persistence.entities.Person.User.*;
-import com.github.egotting.BackEnd.Adapters.out.persistence.entities.Roles.*;
 import com.github.egotting.BackEnd.Domain.entities.Person.Customer.*;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
@@ -30,10 +29,10 @@ public class JpaCustomer {
         this.id = customer.getId();
         this.user = new JpaUser(customer.getUser());
         this.fullName = customer.getFullName();
-        this.cpf = customer.getCpfValue();
+        this.cpf = customer.getCpf();
         this.address = customer.getAddress().stream().map(JpaAddress::new).collect(Collectors.toList());
-        this.phoneNumber = customer.getPhoneNumber();
-        this.role = new JpaRoles(customer.getCustomerRole());
+        this.phoneNumber = customer.getPhone();
+        this.role = customer.getCustomerRole();
         this.orders = customer.getOrders().stream().map(JpaOrders::new).toList();
         this.insertedAt = customer.getInsertedAt();
         this.updatedAt = customer.getUpdatedAt();
@@ -58,9 +57,8 @@ public class JpaCustomer {
     @Column(name = "customer_phone_number", nullable = false)
     @Size(min = 1, max = 100)
     private String phoneNumber;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(nullable = false, unique = true)
-    private JpaRoles role;
+    @Column(name = "customer_role", nullable = false, unique = true)
+    private String role;
     @JoinColumn(name = "customer_orders")
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<JpaOrders> orders;

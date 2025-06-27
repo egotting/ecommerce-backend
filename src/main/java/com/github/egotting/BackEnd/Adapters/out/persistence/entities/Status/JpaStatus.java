@@ -28,7 +28,7 @@ public class JpaStatus {
     @Column(name = "id", unique = true, nullable = false)
     private Long id;
     @Column(name = "status", nullable = false, unique = true)
-    private String status;
+    private List<String> status;
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<JpaOrders> orders;
     @Column(nullable = false, name = "created_at")

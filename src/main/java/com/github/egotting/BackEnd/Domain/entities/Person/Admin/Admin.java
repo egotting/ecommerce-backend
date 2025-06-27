@@ -1,48 +1,61 @@
 package com.github.egotting.BackEnd.Domain.entities.Person.Admin;
 
-import com.github.egotting.BackEnd.Domain.entities.Person.Admin.Objects.*;
-import com.github.egotting.BackEnd.Domain.entities.Roles.*;
+import com.github.egotting.BackEnd.Domain.entities.CValueObjects.*;
+import com.github.egotting.BackEnd.Domain.entities.Person.Admin.ValueObjects.*;
+import com.github.egotting.BackEnd.Domain.entities.Person.User.ValueObjects.*;
+import com.github.egotting.BackEnd.Domain.entities.Roles.Enum.*;
 
 import java.time.*;
 import java.util.*;
 
 public class Admin {
-    public Admin(IdAdmin id, AdminInfo adminInfo) {
-        this.id = id;
-        this.adminInfo = adminInfo;
+    public Admin(
+            CPF cpf, String fullname, Password password,
+            Phone phoneNumber, Key key) {
+        this.cpf = cpf;
+        this.fullname = fullname;
+        this.password = password;
+        this.phoneNumber = phoneNumber;
+        this.key = key;
+        this.role = ERoles.ADMIN.name().toUpperCase();
     }
 
-    private IdAdmin id;
-    private AdminInfo adminInfo;
+    private UUID id;
+    private CPF cpf;
+    private String fullname;
+    private Password password;
+    private Phone phoneNumber;
+    private Key key;
+    private String role;
 
     public UUID getId() {
-        return id.getId();
+        return id;
     }
 
-    public String getFullName() {
-        return adminInfo.getFullname();
+    public CPF getCpf() {
+        return cpf;
+    }
+
+    public String getFullname() {
+        return fullname;
     }
 
     public String getPassword() {
-        return adminInfo.getPassword();
+        return password.getValue();
     }
-
-    public String getCpf() {
-        return id.getCpf().getValue();
-    }
-
 
     public String getPhoneNumber() {
-        return adminInfo.getPhoneNumber();
-    }
-
-    public Roles getRole() {
-        return adminInfo.getAdminRole();
+        return phoneNumber.getValue();
     }
 
     public String getKey() {
-        return adminInfo.getKey();
+        return key.getValue();
     }
+
+    public String getRole() {
+        return ERoles.ADMIN.name().toUpperCase();
+    }
+
 
     public Instant insertedAt() {
         return Instant.now();

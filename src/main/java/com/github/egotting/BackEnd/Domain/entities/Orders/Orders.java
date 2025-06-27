@@ -12,11 +12,11 @@ public class Orders {
     public Orders() {
     }
 
-    public Orders(Long id, Instant data_order, Status status_orders, Customer owner_order, List<ProductsOrders> products_orders, Payment payment) {
+    public Orders(Long id, Instant data_order, Status status_orders, List<ProductsOrders> products_orders, Payment payment) {
         this.id = id;
         this.data_order = data_order;
         this.status_orders = status_orders;
-        this.owner_order = owner_order;
+        this.owner_order.getCpf();
         this.products_orders = products_orders;
         this.payment = payment;
         this.insertedAt = Instant.now();

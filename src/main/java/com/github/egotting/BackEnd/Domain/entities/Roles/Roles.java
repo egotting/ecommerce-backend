@@ -1,12 +1,12 @@
 package com.github.egotting.BackEnd.Domain.entities.Roles;
 
+import com.github.egotting.BackEnd.Domain.entities.Person.Admin.*;
 import com.github.egotting.BackEnd.Domain.entities.Person.Customer.*;
-import com.github.egotting.BackEnd.Domain.entities.Roles.Enum.ERoles;
-import com.github.egotting.BackEnd.Domain.entities.Person.Admin.Admin;
-import com.github.egotting.BackEnd.Domain.entities.Person.User.User;
+import com.github.egotting.BackEnd.Domain.entities.Person.User.*;
+import com.github.egotting.BackEnd.Domain.entities.Roles.Enum.*;
 
-import java.time.Instant;
-import java.util.List;
+import java.time.*;
+import java.util.*;
 
 public class Roles {
     public Roles() {
@@ -34,8 +34,13 @@ public class Roles {
         return id;
     }
 
-    public String getName() {
-        return name.name();
+    public List<String> getRoles() {
+        List<ERoles> roles = List.of(ERoles.values());
+
+        return roles.stream()
+                .map(Enum::name)
+                .toList();
+
     }
 
     public Roles getNameAdmin() {
@@ -46,8 +51,8 @@ public class Roles {
         return name == ERoles.USER ? this : null;
     }
 
-    public Roles getNameCustomer() {
-        return name == ERoles.CUSTOMER ? this : null;
+    public String getNameCustomer() {
+        return ERoles.CUSTOMER == name ? name.name() : null;
     }
 
     public List<Admin> getAdmins() {
