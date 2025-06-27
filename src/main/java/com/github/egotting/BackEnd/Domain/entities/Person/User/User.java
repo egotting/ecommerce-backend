@@ -49,7 +49,6 @@ public class User {
         return password.getValue();
     }
 
-
     public String getRole() {
         return ERoles.USER.name().toUpperCase();
     }

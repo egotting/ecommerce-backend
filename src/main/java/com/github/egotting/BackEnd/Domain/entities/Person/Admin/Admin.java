@@ -29,11 +29,11 @@ public class Admin {
     private String role;
 
     public UUID getId() {
-        return id;
+        return UUID.randomUUID();
     }
 
-    public CPF getCpf() {
-        return cpf;
+    public String getCpf() {
+        return cpf.getValue();
     }
 
     public String getFullname() {

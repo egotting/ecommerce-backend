@@ -12,9 +12,8 @@ public class Orders {
     public Orders() {
     }
 
-    public Orders(Long id, Instant data_order, Status status_orders, List<ProductsOrders> products_orders, Payment payment) {
+    public Orders(Long id, Status status_orders, List<ProductsOrders> products_orders, Payment payment) {
         this.id = id;
-        this.data_order = data_order;
         this.status_orders = status_orders;
         this.owner_order.getCpf();
         this.products_orders = products_orders;
@@ -24,7 +23,6 @@ public class Orders {
     }
 
     private Long id;
-    private Instant data_order;
     private Status status_orders;
     private Customer owner_order;
     private List<ProductsOrders> products_orders;
@@ -34,10 +32,6 @@ public class Orders {
 
     public Long getId() {
         return id;
-    }
-
-    public Instant getData_order() {
-        return data_order;
     }
 
     public Status getStatus_orders() {

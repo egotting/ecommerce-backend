@@ -14,14 +14,13 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(User user, String fullName, CPF cpf, String email,
+    public Customer(User user, String fullName, CPF cpf,
                     Phone phone, List<Address>
                             address, List<Orders> orders) {
         this.id = UUID.randomUUID();
         this.user = user;
         this.fullName = fullName;
         this.cpf = cpf;
-        this.email = email;
         this.phone = phone;
         this.role = ERoles.CUSTOMER.name().toUpperCase();
         this.address = address;
@@ -34,7 +33,6 @@ public class Customer {
     private User user;
     private String fullName;
     private CPF cpf;
-    private String email;
     private Phone phone;
     private String role;
     private List<Address> address;
@@ -43,7 +41,7 @@ public class Customer {
     private Instant updatedAt;
 
     public UUID getId() {
-        return id;
+        return UUID.randomUUID();
     }
 
     public User getUser() {
@@ -58,24 +56,8 @@ public class Customer {
         return phone.getValue();
     }
 
-    public Instant getInsertedAt() {
-        return insertedAt;
-    }
-
-    public Instant getUpdatedAt() {
-        return updatedAt;
-    }
-
     public String getCustomerRole() {
         return getRole();
-    }
-
-    public String getEmailCustomer() {
-        return email;
-    }
-
-    public String getPhoneCustomer() {
-        return phone.getValue();
     }
 
     public String getCpf() {

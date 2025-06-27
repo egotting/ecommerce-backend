@@ -31,7 +31,7 @@ public class JpaUser {
     }
 
     @Id
-    @Column(nullable = false, name = "id")
+    @Column(nullable = false, name = "id", unique = true)
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     @Column(nullable = false, name = "name")
@@ -50,7 +50,7 @@ public class JpaUser {
     private Instant insertedAt;
     @Column(nullable = false, name = "updated_at")
     private Instant updatedAt;
-    @Column(nullable = false, name = "isactive")
+    @Column(nullable = false, name = "is_active")
     private boolean isActive;
 
 }

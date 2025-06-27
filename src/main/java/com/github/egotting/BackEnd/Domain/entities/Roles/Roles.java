@@ -43,12 +43,12 @@ public class Roles {
 
     }
 
-    public Roles getNameAdmin() {
-        return name == ERoles.ADMIN ? this : null;
+    public String getNameAdmin() {
+        return ERoles.ADMIN == name ? name.name() : null;
     }
 
-    public Roles getNameUser() {
-        return name == ERoles.USER ? this : null;
+    public String getNameUser() {
+        return ERoles.USER == name ? name.name() : null;
     }
 
     public String getNameCustomer() {

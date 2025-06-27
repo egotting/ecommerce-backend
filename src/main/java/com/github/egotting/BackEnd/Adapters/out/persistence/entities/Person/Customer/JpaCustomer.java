@@ -30,12 +30,12 @@ public class JpaCustomer {
         this.user = new JpaUser(customer.getUser());
         this.fullName = customer.getFullName();
         this.cpf = customer.getCpf();
-        this.address = customer.getAddress().stream().map(JpaAddress::new).collect(Collectors.toList());
         this.phoneNumber = customer.getPhone();
         this.role = customer.getCustomerRole();
+        this.address = customer.getAddress().stream().map(JpaAddress::new).collect(Collectors.toList());
         this.orders = customer.getOrders().stream().map(JpaOrders::new).toList();
-        this.insertedAt = customer.getInsertedAt();
-        this.updatedAt = customer.getUpdatedAt();
+        this.insertedAt = customer.insertedAt();
+        this.updatedAt = customer.updatedAt();
     }
 
     @Id
@@ -51,14 +51,14 @@ public class JpaCustomer {
     @Column(name = "customer_cpf", nullable = false, unique = true)
     @CPF
     private String cpf;
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "customer_addresses", nullable = false)
-    private List<JpaAddress> address;
     @Column(name = "customer_phone_number", nullable = false)
     @Size(min = 1, max = 100)
     private String phoneNumber;
     @Column(name = "customer_role", nullable = false, unique = true)
     private String role;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "customer_addresses", nullable = false)
+    private List<JpaAddress> address;
     @JoinColumn(name = "customer_orders")
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<JpaOrders> orders;

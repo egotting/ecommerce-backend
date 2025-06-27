@@ -4,6 +4,7 @@ import com.github.egotting.BackEnd.Domain.entities.Person.Admin.*;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.*;
+import org.hibernate.validator.constraints.br.*;
 
 import java.time.*;
 import java.util.*;
@@ -19,6 +20,7 @@ public class JpaAdmin {
     public JpaAdmin(Admin domain) {
         this.id = domain.getId();
         this.fullname = domain.getFullname();
+        this.cpf = domain.getCpf();
         this.password = domain.getPassword();
         this.key = domain.getKey();
         this.role = domain.getRole();
@@ -28,9 +30,12 @@ public class JpaAdmin {
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id", unique = true, nullable = false)
     private UUID id;
+    @Column(nullable = false, unique = true)
+    @CPF
+    private String cpf;
     @Column(nullable = false)
     @Size(min = 1, max = 100, message = "Full name must be between 1 and 100 characters")
     private String fullname;
