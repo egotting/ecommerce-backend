@@ -52,4 +52,8 @@ Sinta-se à vontade para contribuir com melhorias, correções ou sugestões.
 
 Projeto para fins didáticos.
 
+<<<<<<< HEAD
 ```
+=======
+```
+>>>>>>> feature/impl-entity

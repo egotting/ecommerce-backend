@@ -1,0 +1,9 @@
+[10:22:41 2025-06-16] FETCHING Version 2.40.11
+[10:22:41 2025-06-16] CREATING /home/ego/.spicetify
+[10:22:41 2025-06-16] DOWNLOADING https://github.com/spicetify/cli/releases/download/v2.40.11/spicetify-2.40.11-linux-amd64.tar.gz
+[10:22:42 2025-06-16] EXTRACTING /home/ego/.spicetify/spicetify.tar.gz
+[10:22:42 2025-06-16] SETTING EXECUTABLE PERMISSIONS TO /home/ego/.spicetify/spicetify
+[10:22:42 2025-06-16] REMOVING /home/ego/.spicetify/spicetify.tar.gz
+[10:22:42 2025-06-16] APPENDING /home/ego/.spicetify to PATH in /home/ego/.zshrc
+[10:22:42 2025-06-16] spicetify v2.40.11 was installed successfully to /home/ego/.spicetify
+[10:22:42 2025-06-16] Run 'spicetify --help' to get started

@@ -1,5 +1,6 @@
 package com.github.egotting.BackEnd.Domain.Person.Customer.ValueObjects;
 
+import com.github.egotting.BackEnd.Domain.entities.CValueObjects.Phone;
 import org.junit.jupiter.api.Test;
 
 public class PhoneTest {
