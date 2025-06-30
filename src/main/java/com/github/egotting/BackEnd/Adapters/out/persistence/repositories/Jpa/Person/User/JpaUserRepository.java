@@ -1,4 +1,4 @@
-package com.github.egotting.BackEnd.Adapters.out.persistence.repositories.Jpa;
+package com.github.egotting.BackEnd.Adapters.out.persistence.repositories.Jpa.Person.User;
 
 import com.github.egotting.BackEnd.Adapters.out.persistence.entities.Person.User.JpaUser;
 import org.springframework.data.jpa.repository.JpaRepository;
