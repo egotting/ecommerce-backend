@@ -12,6 +12,7 @@ public class Admin {
     public Admin(
             CPF cpf, String fullname, Password password,
             Phone phoneNumber, Key key) {
+        this.id = UUID.randomUUID();
         this.cpf = cpf;
         this.fullname = fullname;
         this.password = password;

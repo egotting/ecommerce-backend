@@ -1,22 +1,17 @@
 package com.github.egotting.BackEnd.Domain.entities.Person.Admin.ValueObjects;
 
+import java.util.*;
+
 public class Key {
     private String value;
 
-    public Key(String value) {
-        this.value = value;
-    }
-
-    private boolean isValid(String value) {
-        if (value == null || value.isEmpty()) return false;
-
-        if (value.length() < 8) return false;
-        return true;
+    public Key() {
+        this.value = generateKey();
     }
 
     public String generateKey() {
-        // TODO: Implement key generation logic
-        return "";
+        UUID key = UUID.randomUUID();
+        return key.toString().replace("-", "");
     }
 
     public String getValue() {

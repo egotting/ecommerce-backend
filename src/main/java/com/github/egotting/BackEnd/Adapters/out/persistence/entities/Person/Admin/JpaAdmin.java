@@ -22,6 +22,7 @@ public class JpaAdmin {
         this.fullname = domain.getFullname();
         this.cpf = domain.getCpf();
         this.password = domain.getPassword();
+        this.phoneNumber = domain.getPhoneNumber();
         this.key = domain.getKey();
         this.role = domain.getRole();
         this.insertedAt = domain.insertedAt();
@@ -42,6 +43,8 @@ public class JpaAdmin {
     @Column(nullable = false)
     @Size(min = 8, max = 35, message = "Nickname must be between 8 and 35 characters")
     private String password;
+    @Column(name = "phone_number", nullable = false)
+    private String phoneNumber;
     @Column(nullable = false, unique = true)
     private String key;
     @Column(name = "admin_role", nullable = false, unique = true)
