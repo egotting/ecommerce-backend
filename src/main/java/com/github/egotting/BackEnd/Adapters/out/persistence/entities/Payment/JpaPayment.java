@@ -32,15 +32,19 @@ public class JpaPayment {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false, unique = true)
     private Long id;
-
     @OneToOne
-    @JoinColumn(name = "identify_payment_id", nullable = false, unique = true)
+    @JoinColumn(name = "identify_payment_id", referencedColumnName = "id", nullable = false, unique = true)
     private JpaCustomer cpf_payer;
     @Column(name = "payment_method", nullable = false)
     private String payment_method;
+    @Column(name = "status_payment", nullable = false)
     private String status_payment;
+    @Column(name = "value_should_pay", nullable = false)
     private BigDecimal value_should_pay;
+    @Column(name = "date_payment", nullable = false)
     private LocalDateTime date_payment;
+    @Column(name = "inserted_at", nullable = false)
     private Instant insertedAt;
+    @Column(name = "updated_at", nullable = false)
     private Instant updatedAt;
 }

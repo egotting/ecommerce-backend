@@ -33,10 +33,10 @@ public class JpaProductsOrders {
     @Column(name = "id", unique = true, nullable = false)
     private Long id;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "order_id", nullable = false)
+    @JoinColumn(name = "order_id", referencedColumnName = "id", insertable = false, updatable = false)
     private JpaOrders orders;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "product_id", nullable = false)
+    @JoinColumn(name = "product_id", referencedColumnName = "id", insertable = false, updatable = false)
     private JpaProducts products;
     @Column(nullable = false)
     @Size(min = 1)

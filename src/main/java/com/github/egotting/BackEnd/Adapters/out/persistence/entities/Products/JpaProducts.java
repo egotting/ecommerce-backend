@@ -1,6 +1,7 @@
 package com.github.egotting.BackEnd.Adapters.out.persistence.entities.Products;
 
 import com.github.egotting.BackEnd.Adapters.out.persistence.entities.Category.*;
+import com.github.egotting.BackEnd.Adapters.out.persistence.entities.ProductsOrders.*;
 import com.github.egotting.BackEnd.Domain.entities.Products.*;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
@@ -8,6 +9,11 @@ import lombok.*;
 
 import java.math.*;
 import java.time.*;
+import java.util.*;
+import java.util.stream.*;
+
+import static jakarta.persistence.CascadeType.ALL;
+import static jakarta.persistence.FetchType.LAZY;
 
 @Entity
 @Table(name = "products")
@@ -25,6 +31,8 @@ public class JpaProducts {
         this.description = domain.getDescription();
         this.price = domain.getPrice();
         this.category = new JpaCategory(domain.getCategory());
+        this.products_orders = domain.getProducts_orders()
+                .stream().map(JpaProductsOrders::new).collect(Collectors.toList());
         this.quantity_stock = domain.getQuantity_stock();
         this.insertedAt = domain.insertedAt();
         this.updatedAt = domain.updatedAt();
@@ -43,8 +51,12 @@ public class JpaProducts {
     @Column(name = "price", precision = 10, scale = 2, nullable = false)
     private BigDecimal price;
     @ManyToOne
-    @JoinColumn(name = "category_id", nullable = false)
+    @JoinColumn(name = "category_id", referencedColumnName = "id",
+            insertable = false, updatable = false, nullable = false)
     private JpaCategory category;
+    @OneToMany(mappedBy = "products", fetch = LAZY, cascade = ALL)
+    @Column
+    private List<JpaProductsOrders> products_orders;
     @Column(nullable = false)
     @Size(min = 1, max = 100)
     private int quantity_stock;

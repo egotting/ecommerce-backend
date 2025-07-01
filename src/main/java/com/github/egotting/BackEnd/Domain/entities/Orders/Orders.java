@@ -34,8 +34,8 @@ public class Orders {
         return id;
     }
 
-    public Status getStatus_orders() {
-        return status_orders;
+    public List<String> getStatus_orders() {
+        return status_orders.getStatus();
     }
 
     public Customer getOwner_order() {

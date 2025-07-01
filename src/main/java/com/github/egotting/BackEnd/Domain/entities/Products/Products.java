@@ -1,46 +1,62 @@
 package com.github.egotting.BackEnd.Domain.entities.Products;
 
 
-import com.github.egotting.BackEnd.Domain.entities.CValueObjects.Quantity;
-import com.github.egotting.BackEnd.Domain.entities.Category.Category;
-import com.github.egotting.BackEnd.Domain.entities.Products.Object.ProductInfo;
+import com.github.egotting.BackEnd.Domain.entities.CValueObjects.*;
+import com.github.egotting.BackEnd.Domain.entities.Category.*;
+import com.github.egotting.BackEnd.Domain.entities.ProductsOrders.*;
 
-import java.math.BigDecimal;
+import java.math.*;
 import java.time.*;
+import java.util.*;
 
 public class Products {
-    public Products(Long id, ProductInfo productInfo, Quantity quantity_stock) {
+    public Products(
+            Long id, String name, String description, BigDecimal price,
+            Category category, List<ProductsOrders> products_orders, Quantity quantity_stock) {
         this.id = id;
-        this.productInfo = productInfo;
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.category = category;
+        this.products_orders = products_orders;
         this.quantity_stock = quantity_stock;
         this.insertedAt = Instant.now();
         this.updatedAt = Instant.now();
     }
 
     private Long id;
-    private ProductInfo productInfo;
+    private String name;
+    private String description;
+    private BigDecimal price;
+    private Category category;
+    private List<ProductsOrders> products_orders;
     private Quantity quantity_stock;
     private Instant insertedAt;
     private Instant updatedAt;
+
 
     public Long getId() {
         return id;
     }
 
     public String getName() {
-        return productInfo.getName();
+        return name;
     }
 
     public String getDescription() {
-        return productInfo.getDescription();
+        return description;
     }
 
     public BigDecimal getPrice() {
-        return productInfo.getPrice();
+        return price;
     }
 
     public Category getCategory() {
-        return productInfo.getCategory();
+        return category;
+    }
+
+    public List<ProductsOrders> getProducts_orders() {
+        return products_orders;
     }
 
     public int getQuantity_stock() {
